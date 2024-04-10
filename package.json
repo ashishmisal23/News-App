@@ -48,5 +48,16 @@
   "main": "postcss.config.js",
   "keywords": [],
   "author": "Ashish Misal",
-  "license": "ISC"
+  "license": "ISC",
+  "engines": {
+    "node": ">=14.0.0",
+    "npm": ">=6.0.0"
+  },
+  "rails": {
+    "commands": {
+      "start": "npm run start",
+      "build": "npm run build"
+    },
+    "port": "$PORT"
+  }
 }
