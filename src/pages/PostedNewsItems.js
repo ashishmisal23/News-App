@@ -5,7 +5,7 @@ import Layout from '../components/Layout';
 import Spinner from '../components/Spinner';
 
 const PostedNewsItems = () => {
-  const [userData, setUserData] = useState(null); // Initialize with null or {}
+  const [userData, setUserData] = useState({}); // Initialize with null or {}
   const [loading, setLoading] = useState(false);
   const [newsItems, setNewsItems] = useState([]);
 
@@ -19,7 +19,7 @@ const PostedNewsItems = () => {
         if (user) {
           setUserData({ email: user }); // Set userData directly to the email retrieved from localStorage
           const response = await axios.post(
-            `http://localhost:5000/api/getnewsitemsbyemail/${user}`
+            `https://newsappbackend-ashishmisal.up.railway.app/api/getnewsitemsbyemail/${userData}`
           );
           setNewsItems(response.data);
         }

@@ -5,8 +5,6 @@ import axios from 'axios'
 import Spinner from '../components/Spinner'
 import { useNavigate } from 'react-router-dom'
 
-
-
 const AddNews = () => {
 
   const [title, setTitle] = useState('')
@@ -14,8 +12,6 @@ const AddNews = () => {
   const [content, setContent] = useState('')
   const [loading, setLoading] = useState(false)
   const user = JSON.parse(localStorage.getItem('user'))
-
-
 
   const navigate = useNavigate()
   const save = async () => {
@@ -30,7 +26,7 @@ const AddNews = () => {
           email: user.email,
         }
       }
-      await axios.post('http://localhost:5000/api/newsitems/addnewsitem', payload)
+      await axios.post('https://newsappbackend-ashishmisal.up.railway.app/api/newsitems/addnewsitem', payload)
       setLoading(false)
       toast('News added successfully', 'success')
       navigate('/home')
@@ -41,8 +37,6 @@ const AddNews = () => {
       setLoading(false)
     }
   }
-
-
 
 
   return (

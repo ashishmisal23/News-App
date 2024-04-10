@@ -13,7 +13,7 @@ const NewsDesc = () => {
     setLoading(true)
     try {
       const result = await axios.post(
-        `http://localhost:5000/api/newsitems/getnewsitembyid/${params.newsid}`,
+        `https://newsappbackend-ashishmisal.up.railway.app/${params.newsid}`,
         {
           newsid: params.newsid,
         }
@@ -31,7 +31,7 @@ const NewsDesc = () => {
 
   useEffect(() => {
     getData();
-  }, [params.newsid]);
+  });
 
 
 

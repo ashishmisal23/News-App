@@ -22,7 +22,7 @@ const LandingPage = () => {
         email,
         password,
       }
-      const result = await axios.post('http://localhost:5000/api/users/login', payload)
+      const result = await axios.post('https://newsappbackend-ashishmisal.up.railway.app/api/users/login', payload)
       console.log(result.data)
       toast('Login Successfull')
       localStorage.setItem('user', JSON.stringify(result.data))
@@ -42,7 +42,7 @@ const LandingPage = () => {
         email,
         password
       }
-      await axios.post('http://localhost:5000/api/users/register', payload)
+      await axios.post('https://newsappbackend-ashishmisal.up.railway.app/api/users/register', payload)
       toast('Registration successfull , Please login')
       setName('')
       setEmail('')
