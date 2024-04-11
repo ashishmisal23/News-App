@@ -19,7 +19,7 @@ const PostedNewsItems = () => {
           const userData = JSON.parse(user);
 
           const response = await axios.post(
-            `http://localhost:8000/api/newsitems/getnewsitemsbyemail/${userData.email}`
+            `https://newsappbackend-ashishmisal.up.railway.app/api/newsitems/getnewsitemsbyemail/${userData.email}`
           );
           setNewsItems(response.data);
         }

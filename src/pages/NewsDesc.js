@@ -17,7 +17,7 @@ const NewsDesc = () => {
     setLoading(true)
     try {
       const result = await axios.post(
-        `http://localhost:8000/api/newsitems/getnewsitembyid/${newsId}`
+        `https://newsappbackend-ashishmisal.up.railway.app/api/newsitems/getnewsitembyid/${newsId}`
     );
     
 
