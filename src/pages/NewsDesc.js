@@ -8,32 +8,31 @@ const NewsDesc = () => {
 
   const [loading, setLoading] = useState(false)
   const [newsItem, setNewsItem] = useState(null)
+
   const params = useParams()
+  const newsId = (params.newsid);
+  console.log(newsId);
+
   const getData = async () => {
     setLoading(true)
     try {
       const result = await axios.post(
-        `https://newsappbackend-ashishmisal.up.railway.app/api/newsitems/getnewsitembyid/:${params.newsid}`,
-        {
-          newsid: params.newsid,
-        }
-      )
+        `http://localhost:8000/api/newsitems/getnewsitembyid/${newsId}`
+    );
+    
 
       setNewsItem(result.data)
-      console.log(result.data)
+      console.log(newsItem)
       setLoading(false)
     } catch (error) {
       console.log(error)
       setLoading(false)
     }
   }
-
-
   useEffect(() => {
+
     getData();
-  });
-
-
+  }, []);
 
   return (
     <Layout>
@@ -45,12 +44,13 @@ const NewsDesc = () => {
             {newsItem !== null && newsItem.title}
           </h1>
           <hr />
-          <p>{newsItem !== null && newsItem.description}</p>
+          <p>{newsItem && newsItem.description}</p>
           <hr />
-          <p>{newsItem !== null && newsItem.content}</p>
+          <p>{newsItem && newsItem.content}</p>
           <hr />
-          <p>{newsItem !== null && newsItem.postedBy.email}</p>
+          <p>{newsItem && newsItem.postedBy && newsItem.postedBy.email}</p>
           <hr />
+
         </div>
       )}
     </Layout>

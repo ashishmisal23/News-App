@@ -5,7 +5,6 @@ import Layout from '../components/Layout';
 import Spinner from '../components/Spinner';
 
 const PostedNewsItems = () => {
-  const [userData, setUserData] = useState({}); // Initialize with null or {}
   const [loading, setLoading] = useState(false);
   const [newsItems, setNewsItems] = useState([]);
 
@@ -13,18 +12,19 @@ const PostedNewsItems = () => {
     const fetchData = async () => {
       setLoading(true);
       try {
-        // Retrieve user data from localStorage
+        // Retrieve user from localStorage
         const user = localStorage.getItem('user');
-        console.log(user);
+
         if (user) {
-          setUserData({ email: user }); // Set userData directly to the email retrieved from localStorage
+          const userData = JSON.parse(user);
+
           const response = await axios.post(
-            `https://newsappbackend-ashishmisal.up.railway.app/api/getnewsitemsbyemail/${userData}`
+            `http://localhost:8000/api/newsitems/getnewsitemsbyemail/${userData.email}`
           );
           setNewsItems(response.data);
         }
       } catch (error) {
-        console.error('Error fetching news items:', error);
+        console.log('Error Fetching Posted News items:', error);
       } finally {
         setLoading(false);
       }
@@ -39,14 +39,14 @@ const PostedNewsItems = () => {
       ) : (
         <div>
           {newsItems.map((item) => (
-            <div key={item._id} className="p-5">
-              <h1 className="my-3 text-2xl font-semibold">{item.title}</h1>
+            <div key={item._id} className="p-5 m-5 w-1/2 box-border border-solid">
+              <h1 className="my-3 text-4xl font-semibold">{item.title}</h1>
               <hr />
-              <p>{item.description}</p>
+              <p className='my-2 text-1xl font-serif'>{item.description}</p>
               <hr />
               <p>{item.content}</p>
               <hr />
-              <p>{item.postedBy.email}</p>
+              <p>Posted By: {item.postedBy.email}</p>
               <hr />
             </div>
           ))}
