@@ -1,12 +1,14 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-
 import Layout from '../components/Layout';
 import Spinner from '../components/Spinner';
+import { useNavigate } from 'react-router-dom';
+
 
 const PostedNewsItems = () => {
   const [loading, setLoading] = useState(false);
   const [newsItems, setNewsItems] = useState([]);
+  const navigate = useNavigate()
 
   useEffect(() => {
     const fetchData = async () => {
@@ -38,21 +40,31 @@ const PostedNewsItems = () => {
       {loading ? (
         <Spinner />
       ) : (
-        <div>
-          {newsItems.map((item) => (
-            <div key={item._id}
-              className="p-5 m-5 w-1/2 box-border border-solid">
-              <h1 className="my-3 text-4xl font-semibold">{item.title}</h1>
-              <hr />
-              <p className='my-2 text-1xl font-serif'>{item.description}</p>
-              <hr />
-              <p>{item.content}</p>
-              <hr />
-              <p>Posted By: {item.postedByemail}</p>
-              <hr />
-            </div>
-          ))}
+        <div className="grid grid-cols-2 sm:grid-cols-1 gap-5 mx-20 sm:mx-5 my-5">
+          {newsItems.map((item) => {
+            return (
+              <div
+                className="shadow-md p-3 border cursor-pointer"
+                onClick={() => navigate(`/newsdesc/${item._id}`)}
+                key={item._id}
+              >
+                <h1 className="text-primary text-lg font-semibold">
+                  {item.title}
+                </h1>
+                <p>{item.description}</p>
+                <div className="flex justify-end flex-col items-end">
+                  <span className="text-gray-500 text-sm">
+                    Posted By : {item.postedByemail}
+                  </span>
+                  <span className="text-gray-500  text-sm">
+                    On : {item.createdAt.slice(0, 10)}
+                  </span>
+                </div>
+              </div>
+            )
+          })}
         </div>
+        
       )}
     </Layout>
   );

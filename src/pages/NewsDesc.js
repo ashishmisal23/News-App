@@ -14,6 +14,7 @@ function NewsDesc() {
     try {
       const result = await axios.post(`https://newsappbackend-ashishmisal.up.railway.app/api/newsitems/getnewsitembyid/${params.newsid}`, { "_id": params.newsid.toString() });
       setNewsItem(result.data)
+      console.log(newsItem)
       setLoading(false)
     } catch (error) {
       console.log(error)
@@ -30,18 +31,25 @@ function NewsDesc() {
       {loading ? (
         <Spinner />
       ) : (
-        <div className="p-5">
-          <h1 className="my-3 text-2xl font-semibold">
-            {newsItem && newsItem.title}
-          </h1>
-          <hr />
-          <p>{newsItem && newsItem.description}</p>
-          <hr />
-          <p>{newsItem && newsItem.content}</p>
-          <hr />
-          {/* Check if 'postedBy' exists before accessing 'email' */}
-          <p>Posted By: {newsItem && newsItem.postedByemail}</p>
-          <hr />
+        <div className="flex flex-col gap-x-8 gap-y-4 mx-30 p-5 h-full sm:mx-5 my-5">
+          <div className='shadow-md p-3 border cursor-pointer'>
+            <h1 className="text-primary text-4xl font-semibold max-w-prose">
+              {newsItem && newsItem.title}
+            </h1>
+            <br />
+            <p className='text-2xl mr-5 max-w-prose'>{newsItem && newsItem.description}</p>
+            <br />
+            <p className="text-1xl max-w-prose">{newsItem && newsItem.content}</p>
+            <br />
+            <div className="flex justify-end flex-col items-end text-3xl">
+              <span className="text-gray-500 text-sm">
+                Posted By: {newsItem && newsItem.postedByemail}
+              </span>
+              <span className="text-gray-500  text-sm">
+                {/* On : {newsItem.createdAt.slice(0, 10)} */}
+              </span>
+            </div>
+          </div>
         </div>
       )}
     </Layout>
