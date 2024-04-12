@@ -44,7 +44,7 @@
   "devDependencies": {
     "tailwindcss": "^3.4.3"
   },
-  "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
+  "description": "News Application Project",
   "main": "postcss.config.js",
   "keywords": [],
   "author": "Ashish Misal",
@@ -57,7 +57,6 @@
     "commands": {
       "start": "npm run start",
       "build": "npm run build"
-    },
-    "port": "$PORT"
+    }
   }
 }

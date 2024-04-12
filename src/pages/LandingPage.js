@@ -16,47 +16,59 @@ const LandingPage = () => {
   const navigate = useNavigate()
 
   const login = async () => {
-    setLoading(true)
+    setLoading(true);
     try {
       const payload = {
         email,
         password,
+      };
+
+      const response = await axios.post('https://newsappbackend-ashishmisal.up.railway.app/api/users/login', payload);
+      const user = response.data;
+
+      if (user) {
+        localStorage.setItem('user', JSON.stringify(user));
+        toast('Login successful');
+        navigate('/home');
+      } else {
+        toast('Invalid email or password');
       }
-      const result = await axios.post('https://newsappbackend-ashishmisal.up.railway.app/api/users/login', payload)
-      console.log(result.data)
-      toast('Login Successfull')
-      localStorage.setItem('user', JSON.stringify(result.data))
-      navigate('/home')
-      setLoading(false)
     } catch (error) {
-      toast('Something went wrong')
-      setLoading(false)
+      toast('Something went wrong');
+    } finally {
+      setLoading(false);
     }
-  }
+  };
+
 
   const register = async () => {
-    setLoading(true)
+    setLoading(true);
     try {
+
       const payload = {
         name,
         email,
         password
-      }
-      await axios.post('https://newsappbackend-ashishmisal.up.railway.app/api/users/register', payload)
-      toast('Registration successfull , Please login')
-      setName('')
-      setEmail('')
-      setPassword('')
-      setLoading(false)
-      setShowRegisterForm(false)
-      setShowLoginForm(true)
+      };
+
+      await axios.post('https://newsappbackend-ashishmisal.up.railway.app/api/users/register', payload);
+      toast('Registration successful, Please login');
+      setName('');
+      setEmail('');
+      setPassword('');
+      setLoading(false);
+      setShowRegisterForm(false);
+      setShowLoginForm(true);
     } catch (error) {
-      toast('Something went wrong...')
-      setLoading(false)
+      toast('Something went wrong...');
+      setLoading(false);
     }
-  }
+  };
+
   useEffect(() => {
-    if (localStorage.getItem('user')) navigate('/home')
+    if (localStorage.getItem('user')) {
+      navigate('/home')
+    }
   })
 
   return (
