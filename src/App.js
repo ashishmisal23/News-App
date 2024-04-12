@@ -1,7 +1,8 @@
 import './App.css'
-import { Route, Routes, BrowserRouter, Navigate } from 'react-router-dom'
+import { Route, Routes, BrowserRouter as Router, Navigate } from 'react-router-dom'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+
 import HomePage from './pages/HomePage'
 import NewsDesc from './pages/NewsDesc'
 import AddNews from './pages/AddNews'
@@ -14,7 +15,7 @@ const App = () => {
   return (
     <div className="App">
       <ToastContainer />
-      <BrowserRouter>
+      <Router>
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route path='/home' element={<ProtectedRoute><HomePage /></ProtectedRoute>} />
@@ -23,7 +24,7 @@ const App = () => {
           <Route path='/profile' element={<ProtectedRoute><Profile /></ProtectedRoute>} />
           <Route path='/newsdesc/:newsid' element={<ProtectedRoute><NewsDesc /></ProtectedRoute>} />
         </Routes>
-      </BrowserRouter>
+      </Router>
     </div>
   )
 }
