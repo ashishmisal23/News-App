@@ -71,7 +71,8 @@ const AddNews = () => {
         ></textarea>
       </div>
       <div className="flex justify-end space-x-5 pr-5 mt-5">
-        <button className="px-5 py-1 bg-red-700 text-sm text-white">
+        <button className="px-5 py-1 bg-red-700 text-sm text-white"
+        onClick={() => navigate('/home')}>
           BACK
         </button>
         <button
