@@ -9,32 +9,36 @@ import { toast } from 'react-toastify';
 const PostedNewsItems = () => {
   const [loading, setLoading] = useState(false);
   const [newsItems, setNewsItems] = useState([]);
+  const [toastCount, setToastCount] = useState(0);
   const navigate = useNavigate()
 
   const deleteNewsItem = async (id) => {
     try {
-      console.log(id)
       setLoading(true);
-      await axios.delete(`http://localhost:8000/api/newsitems/deletenews/${id}`);
-      toast('News Deleted Successfully')
+      console.log(id)
+      await axios.delete(`https://newsappbackend-ashishmisal.up.railway.app/api/newsitems/deletenews/${id}`);
+      toast('News Deleted Successfully');
+      setNewsItems(newsItems.filter(item => item._id !== id));
     } catch (error) {
-      toast('Error deleting news item..');
-      toast('Try Again Letter..');
+      toast('Error deleting news item...');
+      toast('Try Again Later...');
+    } finally {
+      setLoading(false);
+      setToastCount(0);
     }
   };
+
 
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
       try {
-        // Retrieve user from localStorage
         const user = localStorage.getItem('user');
-
         if (user) {
           const userData = JSON.parse(user);
 
           const response = await axios.post(
-            `http://localhost:8000/api/newsitems/getnewsitemsbyemail/${userData.email}`,
+            `https://newsappbackend-ashishmisal.up.railway.app/api/newsitems/getnewsitemsbyemail/${userData.email}`,
             { "email": userData.email }
           );
           setNewsItems(response.data);
@@ -81,10 +85,17 @@ const PostedNewsItems = () => {
 
                   <button
                     className="px-5 py-1 bg-green-500 text-sm text-white"
-                    onClick={() => toast('Double Click to Delete News..')}
-                    onDoubleClick={deleteNewsItem(item._id)} >
+                    onMouseOver={() => {
+                      setToastCount(toastCount + 1);
+                      if (toastCount <= 1) {
+                        toast('Double Click to Delete News..');
+                      }
+                    }}
+                    onDoubleClick={() => deleteNewsItem(item._id)}
+                  >
                     DELETE
                   </button>
+
                 </div>
               </div>
             )
