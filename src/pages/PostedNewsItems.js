@@ -19,7 +19,8 @@ const PostedNewsItems = () => {
           const userData = JSON.parse(user);
 
           const response = await axios.post(
-            `https://newsappbackend-ashishmisal.up.railway.app/api/newsitems/getnewsitemsbyemail/${userData.email}`
+            `https://newsappbackend-ashishmisal.up.railway.app/api/newsitems/getnewsitemsbyemail/${userData.email}`,
+            { "email": userData.email }
           );
           setNewsItems(response.data);
         }
@@ -39,14 +40,15 @@ const PostedNewsItems = () => {
       ) : (
         <div>
           {newsItems.map((item) => (
-            <div key={item._id} className="p-5 m-5 w-1/2 box-border border-solid">
+            <div key={item._id}
+              className="p-5 m-5 w-1/2 box-border border-solid">
               <h1 className="my-3 text-4xl font-semibold">{item.title}</h1>
               <hr />
               <p className='my-2 text-1xl font-serif'>{item.description}</p>
               <hr />
               <p>{item.content}</p>
               <hr />
-              <p>Posted By: {item.postedBy.email}</p>
+              <p>Posted By: {item.postedByemail}</p>
               <hr />
             </div>
           ))}

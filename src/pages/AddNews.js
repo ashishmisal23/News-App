@@ -17,22 +17,24 @@ const AddNews = () => {
   const save = async () => {
     setLoading(true)
     try {
+      if (!user || !user.email) {
+        throw new Error('User data not found')
+      }
+
       const payload = {
         title,
         description,
         content,
-        postedBy: {
-          userid: user._id,
-          email: user.email,
-        }
+        postedByuserid: user._id,
+        postedByemail: user.email,
       }
-      await axios.post('https://newsappbackend-ashishmisal.up.railway.app/api/newsitems/addnewsitem', payload)
+
+      await axios.post('http://localhost:8000/api/newsitems/addnewsitem', payload)
       setLoading(false)
       toast('News added successfully', 'success')
       navigate('/home')
     } catch (error) {
-      console.log(error)
-
+      console.error(error)
       toast('Something went wrong', 'error')
       setLoading(false)
     }

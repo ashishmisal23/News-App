@@ -6,11 +6,11 @@ const SideBar = ({ showSideBar }) => {
   const location = useLocation()
   const navigate = useNavigate()
   const menuItems = [
-    { title: 'Home', path: '/home' },
-    { title: 'Posted', path: '/posted' },
-    { title: 'AddNews', path: '/add' },
-    { title: 'Profile', path: '/profile' },
-    { title: 'Logout', path: '/logout' },
+    { id: 1, title: 'Home', path: '/home' },
+    { id: 2, title: 'Posted', path: '/posted' },
+    { id: 3, title: 'Add News', path: '/add' },
+    { id: 4, title: 'Profile', path: '/profile' },
+    { id: 5, title: 'Logout', path: '/logout' },
   ]
   const logout = () => {
     localStorage.removeItem('user')
@@ -29,6 +29,7 @@ const SideBar = ({ showSideBar }) => {
           return item.title !== 'Logout' ? (
             <Link
               to={`${item.path}`}
+              key={item.id}
               className={`pl-10 py-5 text-gray-400 hover:bg-gray-50 hover:text-gray-700 text-sm
                ${location.pathname.includes(item.path) &&
                 'bg-[#145c2aaf] text-yellow-200 font-bold'
@@ -39,6 +40,7 @@ const SideBar = ({ showSideBar }) => {
             </Link>
           ) : (
             <span
+              key={item.id}
               onClick={logout}
               className="pl-10 py-5 text-gray-400 hover:bg-gray-50 hover:text-gray-700 text-sm cursor-pointer"
             >

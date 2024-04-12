@@ -49,6 +49,7 @@ const HomePage = () => {
                 <div
                   className="shadow-md p-3 border cursor-pointer"
                   onClick={() => navigate(`/newsdesc/${item._id}`)}
+                  key={item._id}
                 >
                   <h1 className="text-primary text-lg font-semibold">
                     {item.title}
@@ -56,7 +57,7 @@ const HomePage = () => {
                   <p>{item.description}</p>
                   <div className="flex justify-end flex-col items-end">
                     <span className="text-gray-500 text-sm">
-                      By : {item.postedBy.email ? item.postedBy.email : 'test user'}
+                      Posted By : {item.postedByemail ? item.postedByemail : 'User'}
 
                     </span>
                     <span className="text-gray-500  text-sm">
