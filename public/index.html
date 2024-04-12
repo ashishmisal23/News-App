@@ -7,15 +7,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#000000" />
   <meta name="description" content="News Application" />
-  
-  
+
+
   <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
 
   <title>News App</title>
   <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+  <script>
+    const clearLocalStorage = () => {
+      localStorage.clear();
+    }
+  </script>
 </head>
 
-<body>
+<body beforeunload={clearLocalStorage}>
 
 
   <div id="root"></div>
