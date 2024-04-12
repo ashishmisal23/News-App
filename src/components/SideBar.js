@@ -39,7 +39,7 @@ const SideBar = ({ showSideBar }) => {
                     case 'Home':
                       icon = <FaHome size={22} />;
                       break;
-                    case 'Posted':
+                    case 'Posted News':
                       icon = <FaNewspaper size={22} />;
                       break;
                     case 'Add News':
