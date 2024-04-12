@@ -44,7 +44,6 @@ const LandingPage = () => {
   const register = async () => {
     setLoading(true);
     try {
-
       const payload = {
         name,
         email,
