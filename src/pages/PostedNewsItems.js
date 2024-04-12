@@ -3,12 +3,25 @@ import React, { useEffect, useState } from 'react';
 import Layout from '../components/Layout';
 import Spinner from '../components/Spinner';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 
 const PostedNewsItems = () => {
   const [loading, setLoading] = useState(false);
   const [newsItems, setNewsItems] = useState([]);
   const navigate = useNavigate()
+
+  const deleteNewsItem = async (id) => {
+    try {
+      console.log(id)
+      setLoading(true);
+      await axios.post(`http://localhost:8000/api/newsitems/deletenews/${id}`);
+      toast('News Deleted Successfully')
+    } catch (error) {
+      toast('Error deleting news item..');
+      toast('Try Again Letter..');
+    }
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -21,7 +34,7 @@ const PostedNewsItems = () => {
           const userData = JSON.parse(user);
 
           const response = await axios.post(
-            `https://newsappbackend-ashishmisal.up.railway.app/api/newsitems/getnewsitemsbyemail/${userData.email}`,
+            `http://localhost:8000/api/newsitems/getnewsitemsbyemail/${userData.email}`,
             { "email": userData.email }
           );
           setNewsItems(response.data);
@@ -35,6 +48,9 @@ const PostedNewsItems = () => {
     fetchData();
   }, []);
 
+
+
+
   return (
     <Layout>
       {loading ? (
@@ -45,10 +61,11 @@ const PostedNewsItems = () => {
             return (
               <div
                 className="shadow-md p-3 border cursor-pointer"
-                onClick={() => navigate(`/newsdesc/${item._id}`)}
                 key={item._id}
               >
-                <h1 className="text-primary text-lg font-semibold">
+                <h1 className="text-primary text-lg font-semibold"
+                  onClick={() => navigate(`/newsdesc/${item._id}`)}
+                >
                   {item.title}
                 </h1>
                 <p>{item.description}</p>
@@ -60,9 +77,19 @@ const PostedNewsItems = () => {
                     On : {item.createdAt.slice(0, 10)}
                   </span>
                 </div>
+                <div className="flex justify-end space-x-5 pr-5 mt-5">
+
+                  <button
+                    className="px-5 py-1 bg-green-500 text-sm text-white"
+                    onClick={() => toast('Double Click to Delete News..')}
+                    onDoubleClick={deleteNewsItem(item._id)} >
+                    DELETE
+                  </button>
+                </div>
               </div>
             )
           })}
+
         </div>
 
       )}
