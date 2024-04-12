@@ -136,19 +136,21 @@ const LandingPage = () => {
               </h1>
 
               <input
-                type="text"
+                type="email"
                 className="border-2 h-10 w-full border-gray-500 px-5 bg-transparent text-gray-500"
                 placeholder="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
+                required
               />
 
               <input
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
                 type="password"
-                className="border-2 h-10 w-full border-gray-500 px-5 bg-transparent text-gray-500"
+                value={password}
                 placeholder="password"
+                onChange={(e) => setPassword(e.target.value)}
+                className="border-2 h-10 w-full border-gray-500 px-5 bg-transparent text-gray-500"
+                required
               />
               <div className="flex justify-end w-full">
                 <button
@@ -173,13 +175,15 @@ const LandingPage = () => {
                 placeholder="name"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
+                required
               />
               <input
-                type="text"
+                type="email"
                 className="border-2 h-10 w-full border-gray-500 px-5 bg-transparent text-gray-500"
                 placeholder="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
+                required
               />
 
               <input
@@ -188,6 +192,7 @@ const LandingPage = () => {
                 placeholder="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
+                required
               />
               <div className="flex justify-end w-full">
                 <button
