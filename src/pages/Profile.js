@@ -29,7 +29,7 @@ const Profile = () => {
       {loading ? (
         <Spinner />
       ) : (
-        <div href="#" class="flex flex-col items-center bg-[#145c2aaf] text-yellow-200 font-bold border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl">
+        <div class="flex flex-col items-center bg-[#145c2aaf] text-yellow-200 font-bold border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl">
           <img class="object-cover rounded-t-lg md:d:rounded-none md:rounded-s-lg"
             src={profileImg}
             alt="User Profile" />
