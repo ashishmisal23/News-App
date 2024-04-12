@@ -15,7 +15,7 @@ const PostedNewsItems = () => {
     try {
       console.log(id)
       setLoading(true);
-      await axios.post(`http://localhost:8000/api/newsitems/deletenews/${id}`);
+      await axios.delete(`http://localhost:8000/api/newsitems/deletenews/${id}`);
       toast('News Deleted Successfully')
     } catch (error) {
       toast('Error deleting news item..');
