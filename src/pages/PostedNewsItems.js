@@ -88,6 +88,19 @@ const PostedNewsItems = () => {
                     onMouseOver={() => {
                       setToastCount(toastCount + 1);
                       if (toastCount <= 1) {
+                        toast('Double Click to Edit News..');
+                      }
+                    }}
+                    onDoubleClick={() => navigate(`/editnews/${item._id}`)}
+
+                  >
+                    EDIT
+                  </button>
+                  <button
+                    className="px-5 py-1 bg-green-500 text-sm text-white"
+                    onMouseOver={() => {
+                      setToastCount(toastCount + 1);
+                      if (toastCount <= 1) {
                         toast('Double Click to Delete News..');
                       }
                     }}

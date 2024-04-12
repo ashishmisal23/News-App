@@ -9,6 +9,7 @@ import AddNews from './pages/AddNews'
 import LandingPage from './pages/LandingPage'
 import PostedNewsItems from './pages/PostedNewsItems'
 import Profile from './pages/Profile'
+import EditNews from './pages/EditNews'
 
 const App = () => {
 
@@ -21,6 +22,7 @@ const App = () => {
           <Route path='/home' element={<ProtectedRoute><HomePage /></ProtectedRoute>} />
           <Route path='/add' element={<ProtectedRoute><AddNews /></ProtectedRoute>} />
           <Route path='/posted' element={<ProtectedRoute><PostedNewsItems /></ProtectedRoute>} />
+          <Route path='/editnews/:newsid' element={<ProtectedRoute><EditNews /></ProtectedRoute>} />
           <Route path='/profile' element={<ProtectedRoute><Profile /></ProtectedRoute>} />
           <Route path='/newsdesc/:newsid' element={<ProtectedRoute><NewsDesc /></ProtectedRoute>} />
         </Routes>
