@@ -52,22 +52,24 @@ const LandingPage = () => {
 
       const response = await axios.post('https://newsappbackend-ashishmisal.up.railway.app/api/users/register', payload);
       console.log(response.data)
-      if(response.data==="User added successfully"){
+      if (response.data === "User added successfully") {
         toast('Registration successful, Please login');
-      setName('');
-      setEmail('');
-      setPassword('');
-      setLoading(false);
-      setShowRegisterForm(false);
-      setShowLoginForm(true);
+        setName('');
+        setEmail('');
+        setPassword('');
+        setLoading(false);
+        setShowRegisterForm(false);
+        setShowLoginForm(true);
       }
-      else{
+      else {
         toast('User with this email already exists');
+        setLoading(false);
       }
-      
+
     } catch (error) {
       toast('Something went wrong...');
       setLoading(false);
+
     }
   };
 
