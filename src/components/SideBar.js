@@ -11,7 +11,7 @@ const SideBar = ({ showSideBar }) => {
   const navigate = useNavigate()
   const menuItems = [
     { id: 1, title: 'Home', path: '/home' },
-    { id: 2, title: 'Posted', path: '/posted' },
+    { id: 2, title: 'Posted News', path: '/posted' },
     { id: 3, title: 'Add News', path: '/add' },
     { id: 4, title: 'Profile', path: '/profile' },
     { id: 5, title: 'Logout', path: '/logout' },
