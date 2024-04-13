@@ -1,8 +1,6 @@
-If you want to create a separate README specifically for the frontend code, you can modify the existing README.md file to include only the relevant information for the frontend. Here's how you can do it:
+### News App Frontend
 
 ```markdown
-# News App Frontend
-
 This project is the frontend for a news application built using React.
 
 ## Features
