@@ -1,4 +1,4 @@
-### News App Frontend
+### News App
 
 ```markdown
 # News App Frontend
