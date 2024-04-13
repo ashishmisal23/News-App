@@ -1,6 +1,7 @@
 ### News App Frontend
 
 ```markdown
+# News App Frontend
 This project is the frontend for a news application built using React.
 
 ## Features
