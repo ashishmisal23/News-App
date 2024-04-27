@@ -5,9 +5,8 @@ import { toast } from 'react-toastify'
 import Spinner from '../components/Spinner'
 import { useNavigate } from 'react-router-dom'
 
-
 const LandingPage = () => {
-  const [showLoginForm, setShowLoginForm] = useState(false)
+  const [showLoginForm, setShowLoginForm] = useState(true)
   const [showRegisterForm, setShowRegisterForm] = useState(false)
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
@@ -15,9 +14,24 @@ const LandingPage = () => {
   const [loading, setLoading] = useState(false)
   const navigate = useNavigate()
 
+  // Function to validate email address
+  const validateEmail = (email) => {
+    // Regular expression for basic email validation
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    return regex.test(email)
+  }
+
+  // Function to handle form submission
   const login = async () => {
     setLoading(true);
     try {
+      // Basic form validation
+      if (!email || !password) {
+        toast('Please enter both email and password')
+        setLoading(false);
+        return;
+      }
+
       const payload = {
         email,
         password,
@@ -40,10 +54,32 @@ const LandingPage = () => {
     }
   };
 
+  // Function to handle form submission
 
   const register = async () => {
     setLoading(true);
     try {
+      // Basic form validation
+      if (!name || !email || !password) {
+        toast('Please fill in all fields');
+        setLoading(false);
+        return;
+      }
+
+      // Validate email
+      if (!validateEmail(email)) {
+        toast('Please enter a valid email address');
+        setLoading(false);
+        return;
+      }
+
+      // Check password length
+      if (password.length < 8) {
+        toast('Password must be at least 8 characters long');
+        setLoading(false);
+        return;
+      }
+
       const payload = {
         name,
         email,
@@ -51,7 +87,7 @@ const LandingPage = () => {
       };
 
       const response = await axios.post('https://newsappbackend-ashishmisal.up.railway.app/api/users/register', payload);
-      console.log(response.data)
+
       if (response.data === "User added successfully") {
         toast('Registration successful, Please login');
         setName('');
@@ -69,15 +105,8 @@ const LandingPage = () => {
     } catch (error) {
       toast('Something went wrong...');
       setLoading(false);
-
     }
   };
-
-  useEffect(() => {
-    if (localStorage.getItem('user')) {
-      navigate('/home')
-    }
-  })
 
   return (
     <div className="h-screen flex items-center sm:flex-col">
@@ -93,8 +122,6 @@ const LandingPage = () => {
 
         <p className="text-lg">
           The News App is your go-to platform for staying updated with the latest news and developments. With a user-friendly interface, it provides easy access to a wide range of news articles, ensuring you're always in the know. Whether it's breaking news, sports updates, or entertainment buzz, the News App has you covered. Join us today and never miss a headline!
-
-
         </p>
         <div className="space-x-5">
           <button
@@ -118,16 +145,6 @@ const LandingPage = () => {
         </div>
       </div>
       <div className="w-1/2 sm:w-screen">
-        {!showLoginForm && !showRegisterForm && (
-          <lottie-player
-            src="https://assets10.lottiefiles.com/packages/lf20_KLaN10ftkY.json"
-            background="transparent"
-            speed="1"
-            loop
-            controls
-            autoplay
-          ></lottie-player>
-        )}
         {showLoginForm && (
           <div className="ml-40 sm:ml-0">
             <div className="flex flex-col bg-primary h-screen justify-center items-center px-20 space-y-5">
@@ -177,6 +194,7 @@ const LandingPage = () => {
                 onChange={(e) => setName(e.target.value)}
                 required
               />
+
               <input
                 type="email"
                 className="border-2 h-10 w-full border-gray-500 px-5 bg-transparent text-gray-500"
@@ -220,6 +238,5 @@ const LandingPage = () => {
     </div>
   )
 }
-
 
 export default LandingPage
