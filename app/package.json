@@ -6,15 +6,15 @@
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.1",
     "@testing-library/user-event": "^14.6.1",
-    "axios": "^1.6.8",
+    "axios": "^1.13.2",
     "cors": "^2.8.5",
-    "dotenv": "^16.4.5",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-icons": "^5.0.1",
-    "react-router-dom": "^6.30.2",
+    "dotenv": "^17.2.3",
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3",
+    "react-icons": "^5.5.0",
+    "react-router-dom": "^7.11.0",
     "react-scripts": "5.0.1",
-    "react-toastify": "^10.0.5",
+    "react-toastify": "^11.0.5",
     "web-vitals": "^5.1.0"
   },
   "scripts": {
@@ -42,7 +42,7 @@
     ]
   },
   "devDependencies": {
-    "tailwindcss": "^3.4.19"
+    "tailwindcss": "^4.1.18"
   },
   "description": "News Application Project",
   "main": "postcss.config.js",
