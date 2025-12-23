@@ -18,7 +18,7 @@ const EditNews = () => {
     const fetchNewsItem = async () => {
       setLoading(true);
       try {
-        const response = await axios.post(`https://newsappbackend-ashishmisal.up.railway.app/api/newsitems/getnewsitembyid/${params.newsid}`);
+        const response = await axios.post(`https://news-app-backend-zeta.vercel.app/api/newsitems/getnewsitembyid/${params.newsid}`);
         const newsItem = response.data;
         setTitle(newsItem.title);
         setDescription(newsItem.description);
@@ -48,7 +48,7 @@ const EditNews = () => {
         content
       };
 
-      await axios.put(`https://newsappbackend-ashishmisal.up.railway.app/api/newsitems/editnews/${params.newsid}`, payload);
+      await axios.put(`https://news-app-backend-zeta.vercel.app/api/newsitems/editnews/${params.newsid}`, payload);
       setLoading(false);
       toast('News updated successfully', 'success');
       navigate('/home');

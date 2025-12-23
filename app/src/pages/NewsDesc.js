@@ -12,7 +12,7 @@ function NewsDesc() {
   const getData = async () => {
     setLoading(true)
     try {
-      const result = await axios.post(`https://newsappbackend-ashishmisal.up.railway.app/api/newsitems/getnewsitembyid/${params.newsid}`, { "_id": params.newsid.toString() });
+      const result = await axios.post(`https://news-app-backend-zeta.vercel.app/api/newsitems/getnewsitembyid/${params.newsid}`, { "_id": params.newsid.toString() });
       setNewsItem(result.data)
       console.log(newsItem)
       setLoading(false)

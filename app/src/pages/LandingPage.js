@@ -37,7 +37,7 @@ const LandingPage = () => {
         password,
       };
 
-      const response = await axios.post('https://newsappbackend-ashishmisal.up.railway.app/api/users/login', payload);
+      const response = await axios.post('https://news-app-backend-zeta.vercel.app/api/users/login', payload);
       const user = response.data;
 
       if (user) {
@@ -86,7 +86,7 @@ const LandingPage = () => {
         password
       };
 
-      const response = await axios.post('https://newsappbackend-ashishmisal.up.railway.app/api/users/register', payload);
+      const response = await axios.post('https://news-app-backend-zeta.vercel.app/api/users/register', payload);
 
       if (response.data === "User added successfully") {
         toast('Registration successful, Please login');
