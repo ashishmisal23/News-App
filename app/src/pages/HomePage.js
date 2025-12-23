@@ -14,7 +14,7 @@ const HomePage = () => {
   const getData = async () => {
     setLoading(true)
     try {
-      const result = await axios.get('https://newsappbackend-ashishmisal.up.railway.app/api/newsitems/getallnewsitems')
+      const result = await axios.get('https://news-app-backend-zeta.vercel.app/api/newsitems/getallnewsitems')
       setLoading(false)
       setNewsItems(result.data)
     } catch (error) {

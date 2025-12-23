@@ -16,7 +16,7 @@ const PostedNewsItems = () => {
     try {
       setLoading(true);
       console.log(id)
-      await axios.delete(`https://newsappbackend-ashishmisal.up.railway.app/api/newsitems/deletenews/${id}`);
+      await axios.delete(`https://news-app-backend-zeta.vercel.app/api/newsitems/deletenews/${id}`);
       toast('News Deleted Successfully');
       setNewsItems(newsItems.filter(item => item._id !== id));
     } catch (error) {
@@ -38,7 +38,7 @@ const PostedNewsItems = () => {
           const userData = JSON.parse(user);
 
           const response = await axios.post(
-            `https://newsappbackend-ashishmisal.up.railway.app/api/newsitems/getnewsitemsbyemail/${userData.email}`,
+            `https://news-app-backend-zeta.vercel.app/api/newsitems/getnewsitemsbyemail/${userData.email}`,
             { "email": userData.email }
           );
           setNewsItems(response.data);
