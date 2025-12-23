@@ -41,9 +41,6 @@
       "last 1 safari version"
     ]
   },
-  "devDependencies": {
-    "tailwindcss": "3.4.19"
-  },
   "description": "News Application Project",
   "main": "postcss.config.js",
   "keywords": [],
@@ -58,5 +55,10 @@
       "start": "npm run start",
       "build": "npm run build"
     }
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.23",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^3.4.19"
   }
 }
