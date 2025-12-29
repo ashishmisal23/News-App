@@ -8,15 +8,13 @@ Users can register, log in, post news articles, edit or delete their own posts, 
 
 ## 📁 Project Structure
 
-```
-
+``
 News-App/
 │
 ├── app/            # Frontend (React)
 ├── server/         # Backend (Node.js, Express)
 └── README.md       # Project documentation
-
-````
+``
 
 ---
 
