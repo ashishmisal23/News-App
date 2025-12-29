@@ -1,4 +1,3 @@
-```markdown
 # 📰 News App (Full Stack Application)
 
 This is a **full-stack News Application** built with **React** for the frontend and **Node.js + Express + MongoDB** for the backend.  
@@ -8,13 +7,13 @@ Users can register, log in, post news articles, edit or delete their own posts, 
 
 ## 📁 Project Structure
 
-``
+```
 News-App/
 │
 ├── app/            # Frontend (React)
 ├── server/         # Backend (Node.js, Express)
 └── README.md       # Project documentation
-``
+```
 
 ---
 
@@ -66,7 +65,7 @@ https://newsapp-ashishmisal.vercel.app
 ```bash
 git clone https://github.com/ashishmisal23/News-App.git
 cd News-App
-````
+```
 
 ---
 
